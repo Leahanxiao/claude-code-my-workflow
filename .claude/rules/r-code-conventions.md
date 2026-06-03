@@ -34,12 +34,12 @@ paths:
 ## 4. Visual Identity
 
 ```r
-# --- Your institutional palette ---
-primary_blue  <- "#012169"
-primary_gold  <- "#f2a900"
-accent_gray   <- "#525252"
+# --- UChicago palette ---
+primary_maroon <- "#800000"
+dark_gray      <- "#767676"
+light_gray     <- "#D6D6CE"
 positive_green <- "#15803d"
-negative_red  <- "#b91c1c"
+negative_red   <- "#b91c1c"
 ```
 
 ### Custom Theme
@@ -47,13 +47,18 @@ negative_red  <- "#b91c1c"
 theme_custom <- function(base_size = 14) {
   theme_minimal(base_size = base_size) +
     theme(
-      plot.title = element_text(face = "bold", color = primary_blue),
+      plot.title = element_text(face = "bold", color = primary_maroon),
       legend.position = "bottom"
     )
 }
 ```
 
-### Figure Dimensions for Beamer
+### Figure Dimensions (paper-ready)
+```r
+ggsave(filepath, width = 7, height = 4.5, bg = "white")
+```
+
+### Figure Dimensions for Beamer (presentation slides)
 ```r
 ggsave(filepath, width = 12, height = 5, bg = "transparent")
 ```
@@ -68,11 +73,13 @@ saveRDS(result, file.path(out_dir, "descriptive_name.rds"))
 
 ## 6. Common Pitfalls
 
-<!-- Add your field-specific pitfalls here -->
 | Pitfall | Impact | Prevention |
 |---------|--------|------------|
-| Missing `bg = "transparent"` | White boxes on slides | Always include in ggsave() |
+| Missing `bg = "transparent"` | White boxes on slides | Always include in ggsave() for slides |
 | Hardcoded paths | Breaks on other machines | Use relative paths |
+| City code mismatch across census waves | Wrong merges | Always verify using authoritative code crosswalk |
+| CFPS individual vs household weights | Wrong SE/WLS | Document weight choice in script header |
+| Housing price deflation omission | Biased real values | Always deflate with CPI at city level |
 
 ## 7. Line Length & Mathematical Exceptions
 

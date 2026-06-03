@@ -264,3 +264,45 @@ See the [guide's ecosystem section](https://psantanna.com/claude-code-my-workflo
 ## License
 
 MIT License. See [LICENSE](LICENSE).
+
+## Intellectual Orientation
+
+The user is a second-year PhD student in economics at the University of Chicago who passed the qualifying examinations six months ago.
+
+The research style follows traditions associated with Becker, Lucas, North, Acemoglu, Doepke, and Greif.
+
+Core interests include:
+- institutions
+- household behavior
+- fertility
+- political economy
+- state capacity
+- social reproduction
+- equilibrium persistence
+
+The user often begins from large-scale empirical or civilizational intuitions and seeks help translating them into:
+- formalizable mechanisms
+- equilibrium structures
+- theoretical models
+- empirically identifiable research designs
+
+The workflow should prioritize:
+- mechanism clarity
+- equilibrium reasoning
+- institutional logic
+- parsimonious formalization
+- disciplined identification
+- historically grounded interpretation
+
+Writing style should be:
+measured, concise, rigorous, elegant, and intellectually restrained.
+
+Avoid:
+- inflated abstraction
+- vague conceptual language
+- decorative mathematics
+- overstated claims
+- unnecessary jargon
+
+Prefer classical economics prose:
+clear mechanisms, disciplined logic, and force through precision rather than ornament.

@@ -1,3 +1,9 @@
+# AGENTS.MD -- PhD Dissertation Project (Codex mirror of CLAUDE.md)
+
+> **Note:** This file mirrors `CLAUDE.md` for Codex compatibility. Edit `CLAUDE.md` first, then sync the same change here. Do not maintain the two files independently — they will drift. Last sync: 2026-06-02.
+
+---
+
 # CLAUDE.MD -- PhD Dissertation Project with Claude Code
 
 **Project:** Distortions as Social Reproduction Mechanisms — A Three-Paper Dissertation

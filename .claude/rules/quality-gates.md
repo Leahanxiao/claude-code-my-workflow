@@ -3,6 +3,8 @@ paths:
   - "Slides/**/*.tex"
   - "Quarto/**/*.qmd"
   - "scripts/**/*.R"
+  - "scripts/**/*.do"
+  - "scripts/**/*.py"
 ---
 
 # Quality Gates & Scoring Rubrics
@@ -44,6 +46,29 @@ paths:
 | Critical | XeLaTeX compilation failure | -100 |
 | Critical | Undefined citation | -15 |
 | Critical | Overfull hbox > 10pt | -10 |
+
+## Stata Scripts (.do)
+
+| Severity | Issue | Deduction |
+|----------|-------|-----------|
+| Critical | Syntax error / do-file crashes | -100 |
+| Critical | IV first-stage F-stat not reported | -20 |
+| Critical | Hardcoded absolute path | -20 |
+| Critical | Panel not set (`xtset`) before XT commands | -15 |
+| Major | Clustering not documented | -10 |
+| Major | No `log using` / output not captured | -10 |
+| Major | Missing `reghdfe`/`ivreg2` version pinning | -5 |
+| Minor | No `quietly` on verbose commands | -2 |
+
+## Python Scripts (.py)
+
+| Severity | Issue | Deduction |
+|----------|-------|-----------|
+| Critical | Syntax error / script crashes | -100 |
+| Critical | Hardcoded absolute path | -20 |
+| Major | No random seed for stochastic steps | -10 |
+| Major | Data written without version/checksum | -5 |
+| Minor | No docstring on functions | -2 |
 
 ## Enforcement
 

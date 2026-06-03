@@ -1,0 +1,97 @@
+% ==============================================================================
+% header.tex — Beamer Preamble for Bargaining over Babies
+% Theme: Metropolis
+% ==============================================================================
+
+% --- Theme ---
+\usetheme[progressbar=frametitle, block=fill, numbering=fraction]{metropolis}
+
+% --- Packages ---
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{hyperref}
+\usepackage{natbib}
+\bibliographystyle{aer}
+
+% --- Colors (Metropolis-compatible) ---
+\definecolor{mDarkTeal}{HTML}{23373b}
+\definecolor{mLightBrown}{HTML}{EB811B}
+\definecolor{mLightGreen}{HTML}{14B03D}
+\definecolor{keyboxgold}{HTML}{FFF3CD}
+\definecolor{keyboxborder}{HTML}{D4A017}
+\definecolor{defboxblue}{HTML}{DBEAFE}
+\definecolor{defboxborder}{HTML}{2563EB}
+\definecolor{highlightaccent}{HTML}{EB811B}
+
+% --- Custom Environments ---
+
+% keybox: Gold background — main takeaway / key result
+\newtcolorbox{keybox}{
+  enhanced,
+  colback=keyboxgold,
+  colframe=keyboxborder,
+  arc=3pt,
+  boxrule=1.2pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt,
+  fontupper=\small\bfseries
+}
+
+% definitionbox: Blue-bordered titled box — formal model definitions
+\newtcolorbox{definitionbox}[1][Definition]{
+  enhanced,
+  title=#1,
+  colback=defboxblue,
+  colframe=defboxborder,
+  colbacktitle=defboxborder,
+  coltitle=white,
+  arc=3pt,
+  boxrule=1pt,
+  fonttitle=\small\bfseries,
+  left=6pt, right=6pt, top=4pt, bottom=4pt,
+  fontupper=\small
+}
+
+% highlightbox: Accent left-bar box — empirical findings
+\newtcolorbox{highlightbox}{
+  enhanced,
+  borderline west={3pt}{0pt}{highlightaccent},
+  colback=white,
+  colframe=white,
+  arc=0pt,
+  boxrule=0pt,
+  left=10pt, right=4pt, top=3pt, bottom=3pt,
+  fontupper=\small\itshape
+}
+
+% --- Metropolis Color Customization ---
+\setbeamercolor{frametitle}{bg=mDarkTeal}
+\setbeamercolor{progress bar}{fg=mLightBrown}
+\setbeamercolor{alerted text}{fg=mLightBrown}
+
+% --- Font Setup (XeLaTeX) ---
+% Metropolis loads fontspec automatically; install Fira Sans + Fira Mono for
+% the native Metropolis look. Without them, Metropolis falls back gracefully.
+% To activate: uncomment below and install both font families.
+% \setsansfont{Fira Sans}[BoldFont={Fira Sans SemiBold}, ItalicFont={Fira Sans Italic}]
+% \setmonofont{Fira Mono}
+
+% --- Slide Numbering ---
+\setbeamertemplate{frame numbering}[fraction]
+
+% --- Remove Navigation Symbols ---
+\setbeamertemplate{navigation symbols}{}
+
+% --- Footer ---
+\setbeamertemplate{footline}{
+  \hfill\usebeamerfont{page number in head/foot}%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \insertframenumber/\inserttotalframenumber\hspace{2em}\vspace{2pt}
+}
