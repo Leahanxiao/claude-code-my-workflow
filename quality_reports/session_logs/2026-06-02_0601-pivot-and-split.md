@@ -299,6 +299,41 @@ followed by JPE/QJE-style format polish; report file lives at
 | `\@startsection` redefinition for section heading typography | titlesec package | titlesec not installable without sudo; `\@startsection` is the LaTeX built-in mechanism and gives equivalent control. |
 | Conclusion rewritten as 4 prose paragraphs | Keep 11-bullet enumeration; promote bullets to numbered findings list | Top journals (JPE, QJE) use prose conclusions that synthesize rather than restate. The abstract bullets already enumerate the headline numbers; the conclusion's job is interpretation, not redundant restatement. |
 
+## Round 6 — Em-Dash Sweep + Frame→Identification Map (2026-06-05)
+
+User asked for two further polishes on
+`/Users/xiaoo/Desktop/0601/report/identification.tex`: language
+should be valid, powerful, measured, composed, and concise, with
+fewer dashes; and the framework should map explicitly onto the
+identification strategy.
+
+**Em-dash cleanup.**  All 64 em-dashes in the report removed and
+replaced contextually with colons, commas, parentheses, or recast
+clauses.  Final body em-dash count: zero.  Replacements preserved
+meaning while tightening prose.
+
+**Structural rebuild (user/linter parallel work, accepted).**
+- §1 Introduction unchanged.
+- §2 renamed "Framework and Institutional Setting"; collapsed to
+  three subsections (The Institutional Problem; Two Channels;
+  From Framework to Identification).  The closing §2.3
+  pre-states the four empirical objects and how each maps to an
+  identifying restriction.
+- §4 Empirical Strategy gains a new §4.3 *Identification Map*
+  with a four-row table linking the framework objects to their
+  empirical comparisons and identification issues, placed
+  immediately before the baseline-specification subsection.
+
+**End-to-end verification (2026-06-05).**
+- master.do clean: exit 0; "ALL DONE at 5 Jun 2026 14:40:19"; zero
+  `r(...)` errors; all 16 Stata steps and all 12 R figure scripts
+  executed.  Total wall-clock approximately 40 minutes.
+- Recompile from scratch: 40 pp / 640 KB; zero LaTeX errors, zero
+  warnings, zero unresolved references.
+- Final content audit: zero em-dashes; zero Chinese in body text
+  (province names persist in original-data table cells);
+  zero `\texttt{*.do/.dta/.R}` code-path references in body.
+
 ## Next Steps (deferred to next session)
 
 - [ ] **`11_career_outcomes.do` + new Module B sub-section.** Build career-process outcomes from `did_panel.dta`: `return_to_service` (binary, within 5 yr of leave), `years_to_next_post`, `rank_change_first_post_return`, `admin_level_change`, `promotion_to_rg6/3/governor`. Add 1-page section to Module B exhibiting these by treated vs control + simple TWFE event studies.
