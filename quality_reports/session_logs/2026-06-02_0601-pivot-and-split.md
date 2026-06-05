@@ -215,6 +215,90 @@ The user asked for the report to be reconstructed along the original three-layer
 | Abstract added at the top | Skip the abstract; the Frame section opens cold | Supervisor-facing draft; an AER-grade abstract is the standard form. |
 | §1.4 rewritten to two explicit big questions (state-capacity triangle + 家国同构) | Keep the prior single "central question" framing | The user's original spec asked for both questions explicitly. The two-questions framing makes the framework primitives traceable to specific empirical exhibits. |
 
+## Round 5 — JPE/QJE Format Polish + Conclusion Prose (2026-06-05)
+
+Continued from Round 4. User asked for AER-style architecture polish
+followed by JPE/QJE-style format polish; report file lives at
+`/Users/xiaoo/Desktop/0601/report/identification.tex` (37 pp / 589 KB).
+
+**Architectural rebuild (preceded format polish):**
+- Renamed sections to top-paper natural form: §1 Introduction
+  (replaces "Framework"), §2 Institutional Setting (subsumes game /
+  mechanism content), §3 Data (stripped code/file refs), §4
+  Empirical Strategy (was "Identification"), §5 Effects on
+  Individual Careers, §6 Effects on Senior Local Offices, §7
+  Mechanisms: Two Channels of Bureaucratic Substitutability, §8
+  Conclusion.
+- "Provincial official/agent" → "local agent" / "senior local office"
+  throughout, per user's preference to not over-specify hierarchy.
+- Replaced bulleted abstract with five categories: Question, Design,
+  Main facts, Interpretation, Open tests.
+- Data section restructured around two tables (variable inventory +
+  sample sizes) instead of narrating code paths or file names.
+- Mechanisms / two-logics chapter reframed as "person-based" /
+  "office-based" channels (more substantive than the literal
+  "rule by persons" / "rule by institutions" labels).
+
+**Chinese sweep:**
+- Body text contains zero Chinese characters after the pass.
+  Preserved Chinese province names in original-data table cells
+  (they're the raw labels in CGED-Q outputs).
+- Pinyin glosses for institutional terms: \textit{xunfu} for senior
+  provincial governor; \textit{zongdu} for governor-general;
+  \textit{duoqing} for imperial retention; \textit{dingyou} for
+  mourning leave; \textit{feirengehua} for impersonal bureaucracy;
+  \textit{fazhi} for rule of law; \textit{wenzezhi} for accountability;
+  \textit{xiao} for filial piety.
+- Source attributions standardised to "Source: CGED-Q (Qing
+  administrative records)".
+
+**JPE/QJE typography:**
+- 11pt body, Songti TC (carries both Latin and CJK glyphs without
+  requiring xeCJK — that package is not installed in TeX Live 2026
+  basic).
+- Helvetica sans, Menlo mono.
+- 1″ side margins, 1.1″ top/bottom.
+- Single-spaced 1.05× leading.
+- Modest section headings via `\@startsection` redefinition
+  (titlesec not installable without sudo):
+  large bold (§), normal bold (§§), italic (§§§), inline italic (¶).
+- Caption labels small font with bold label and period separator.
+- Float spacing 12pt; table row stretch 1.10×.
+
+**Translation-artifact cleanup:**
+- "Father's mourning (father's mourning) returns…" →
+  "Father's mourning returns…" (and same for mother).
+- "share of imperial retention retentions" →
+  "share of imperial-retention spells".
+
+**Conclusion rewritten in prose:**
+- Replaced 11-bullet enumeration with four synthetic paragraphs:
+  (i) opening framing of the two margins; (ii) within-official
+  margin synthesis; (iii) office-level margin synthesis; (iv) the
+  two-channel partition + three open margins for direct
+  identification (Type-B identification via parental-mortality
+  proxies; retention-incidence measurement by cohort; downstream
+  reassignment quality / longevity / terminal rank).
+
+**End-to-end verification:**
+- `master.do` ran cleanly end-to-end (15:32–16:36 wall-clock,
+  exit 0, "ALL DONE" at 16:35:54, zero `r(...)` errors).  The 13_
+  `r(622) nothing to restore` bug from the first attempt was fixed
+  by removing an orphan `restore` line.
+- All 27 `\input{tab_...}` and 12 `\includegraphics{fig_...}` paths
+  resolve.
+- All `\ref{}` targets resolve (zero unresolved references).
+- Compile from scratch: 37 pp / 589 KB; zero LaTeX errors; zero
+  warnings.
+
+**Round-5 design decisions:**
+
+| Decision | Alternatives | Rationale |
+|---|---|---|
+| Songti TC as main font (not Times New Roman + xeCJK) | Install xeCJK via tlmgr (failed: no sudo); TeX Gyre Termes + FallbackFonts (failed: XeLaTeX doesn't support that fontspec feature) | Songti TC carries both Latin and CJK glyphs and is already on the system. Latin glyphs are acceptable for an internal draft; the JPE/QJE feel comes more from layout than from precise Times-clone glyphs. |
+| `\@startsection` redefinition for section heading typography | titlesec package | titlesec not installable without sudo; `\@startsection` is the LaTeX built-in mechanism and gives equivalent control. |
+| Conclusion rewritten as 4 prose paragraphs | Keep 11-bullet enumeration; promote bullets to numbered findings list | Top journals (JPE, QJE) use prose conclusions that synthesize rather than restate. The abstract bullets already enumerate the headline numbers; the conclusion's job is interpretation, not redundant restatement. |
+
 ## Next Steps (deferred to next session)
 
 - [ ] **`11_career_outcomes.do` + new Module B sub-section.** Build career-process outcomes from `did_panel.dta`: `return_to_service` (binary, within 5 yr of leave), `years_to_next_post`, `rank_change_first_post_return`, `admin_level_change`, `promotion_to_rg6/3/governor`. Add 1-page section to Module B exhibiting these by treated vs control + simple TWFE event studies.
