@@ -121,7 +121,7 @@ Each report uses standalone preamble inside the `.tex` (no `Preambles/header.tex
 
 | Artifact | Path | Role |
 |----------|------|------|
-| Raw CGED-Q derivative | `/Users/xiaoo/Desktop/丁忧/dingyou_clean.dta` | Upstream input |
+| Raw Academia Sinica IHP derivative | `/Users/xiaoo/Desktop/丁忧/dingyou_clean.dta` | Upstream input |
 | 0525 pipeline | `/Users/xiaoo/Desktop/0525/code/` (Stata + R) | Data construction |
 | 0525 report | `/Users/xiaoo/Desktop/0525/report/main.{tex,pdf}` | Methodology + descriptives |
 | 0527 pipeline | `/Users/xiaoo/Desktop/0527/code/` (Stata + R) | DiD analysis |

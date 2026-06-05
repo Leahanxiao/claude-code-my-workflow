@@ -157,7 +157,7 @@ See `data-manifest.md` for full details (paths, dates, variables).
 
 | Paper | Title | Status | Key Data / IV |
 |-------|-------|--------|---------------|
-| **Paper 1** | *Dingyou*, Bureaucratic Careers, and State Capacity in Imperial China | **Active** — data construction + DiD reports at `/Users/xiaoo/Desktop/{0525,0527}/`; identification-strategy reconfiguration in `/Users/xiaoo/Desktop/0601/` (2026-06-01) | Parental mortality shock; CGED-Q bureaucratic records; Qing ethnic variation |
+| **Paper 1** | *Dingyou*, Bureaucratic Careers, and State Capacity in Imperial China | **Active** — data construction + DiD reports at `/Users/xiaoo/Desktop/{0525,0527}/`; identification-strategy reconfiguration in `/Users/xiaoo/Desktop/0601/` (2026-06-01) | Parental mortality shock; Academia Sinica IHP Digital Archive (Qing official postings); Qing ethnic variation |
 | **Paper 2** | Misallocation, Educational Involution, and the Fertility Trap | **Active** — APSR gender lit review underway (2026-05); framework drafted | Bartik shift-share (pre-2008 industry × 4T stimulus); CFPS fertility; city housing price panel |
 | **Paper 3** | Tariff Policy, Firm–State Rent-Seeking, and the Fiscal State | Proposal stage | WTO accession tariff schedule; firm political embeddedness (ownership, party membership) |
 
@@ -174,7 +174,7 @@ LaTeX source: `~/Downloads/proposal.tex` + `~/Desktop/proposal.tex`
 | **Umbrella report** | `/Users/xiaoo/Desktop/0601/report/identification.tex` → `identification.pdf` | `cd /Users/xiaoo/Desktop/0601/report && latexmk -xelatex identification.tex` |
 | **Main paper (Module B)** | `/Users/xiaoo/Desktop/0601/report/bureaucratic_resilience.tex` → `bureaucratic_resilience.pdf` | `cd /Users/xiaoo/Desktop/0601/report && latexmk -xelatex bureaucratic_resilience.tex` |
 | **Appendix (Module A)** | `/Users/xiaoo/Desktop/0601/report/career_effects_appendix.tex` → `career_effects_appendix.pdf` | `cd /Users/xiaoo/Desktop/0601/report && latexmk -xelatex career_effects_appendix.tex` |
-| Raw cleaned input (CGED-Q derivative) | `/Users/xiaoo/Desktop/丁忧/dingyou_clean.dta` | — (upstream) |
+| Raw cleaned input (Academia Sinica IHP derivative) | `/Users/xiaoo/Desktop/丁忧/dingyou_clean.dta` | — (upstream) |
 | Data construction pipeline (upstream) | `/Users/xiaoo/Desktop/0525/code/` (8 `.do` + 4 `.R` + `master.do`) | `cd /Users/xiaoo/Desktop/0525 && stata -b do code/master.do` |
 | Data construction report (upstream) | `/Users/xiaoo/Desktop/0525/report/main.tex` → `main.pdf` | `cd /Users/xiaoo/Desktop/0525/report && latexmk -xelatex main.tex` |
 | DiD analysis pipeline (frozen prior cut) | `/Users/xiaoo/Desktop/0527/code/` (8 `.do` + 6 `.R` + `master.do`) | `cd /Users/xiaoo/Desktop/0527 && stata -b do code/master.do` |
@@ -202,7 +202,7 @@ Welfare cost = $\mathcal{L}^{\text{static}} + \mathcal{L}^{\text{repro}}$ — th
 | `output/` | Active (external: `/Users/xiaoo/Desktop/0601/output/` primary; 0525/0527 supplementary) | Tables (.tex) and figures (.pdf/.png/.csv) per pipeline. 0601 has 26 tables + 60+ figures + audit CSVs. |
 | `report/` (external) | Active | **0601 primary:** `identification.tex` (umbrella) + `bureaucratic_resilience.tex` (Module B main paper) + `career_effects_appendix.tex` (Module A appendix). Upstream: `0525/report/main.tex` (data construction). Frozen: `0527/report/did_analysis.tex`. Executive summary at `~/Downloads/research_summary.tex`. |
 | `paper/` (in-repo) | Planned | Full LaTeX paper draft (when ready) |
-| `data-manifest.md` | Active | External data source documentation (incl. CGED-Q + 0525/0527/0601 derivatives as of 2026-06-02) |
+| `data-manifest.md` | Active | External data source documentation (incl. Academia Sinica IHP Digital Archive + 0525/0527/0601 derivatives as of 2026-06-05) |
 | `Slides/` | Active | Beamer presentation slides |
 | `Preambles/header.tex` | Active | Metropolis theme, custom environments |
 | `Bibliography_base.bib` | Active | Bibliography entries |

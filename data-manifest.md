@@ -24,18 +24,19 @@ Active Paper 2 (fertility) datasets live under the in-repo `data/raw/...` layout
 
 ## Data Sources
 
-### 0. CGED-Q (China Government Employee Database — Qing) — *Paper 1 primary input*
+### 0. Academia Sinica IHP Digital Archive (Qing official postings) — *Paper 1 primary input*
 
 | Field | Value |
 |-------|-------|
-| **Source** | Lee–Campbell research group, HKUST (compiled from 履歷 / Qing personnel records, including 大清縉紳全書 and related serials) |
+| **Source** | Academia Sinica, Institute of History and Philology (IHP), Digital Archive of Qing official postings (大清縉紳全書 and related serials) |
+| **URL** | <https://newarchive.ihp.sinica.edu.tw/sncaccgi/sncacFtp> |
 | **Coverage** | All recorded Qing officials, 1644–1912 |
 | **Local path (raw clean)** | `/Users/xiaoo/Desktop/丁忧/dingyou_clean.dta` |
-| **Pipeline derivatives** | See §6 (0525 data construction) and §7 (0527 DiD analysis) |
-| **Date last refreshed** | 2026-05-28 (last `master.do` run; see `/Users/xiaoo/Desktop/0527/master.log`) |
+| **Pipeline derivatives** | See §6 (0525 data construction) and §7 (0527 DiD analysis), §8 (0601 identification reconfiguration) |
+| **Date last refreshed** | 2026-06-05 (latest `master.do` run; see `/Users/xiaoo/Desktop/0601/master.log`) |
 | **Key variables** | `obs_id`, `group_id` (official identifier), `wy` (record year), `履歷` (career-history text, traditional Chinese), `rg` (rank grade 1–13), `admin_level` (0–9), `isp` (posting-candidate flag), `is_governor` (巡撫 indicator), `post_province`, `post_circuit`, `post_prefecture`, `keju_bg` (exam background), `first_dy_year` (first dingyou year), `ever_dingyou` |
-| **Scale** | ~38,815 distinct officials; ~2,684 dingyou-treated; ~20,953 in DiD panel after filters |
-| **Notes** | Text encoded in traditional Chinese. Rank dictionary is maintained externally — do not redefine in code. Year imputation uses 5 tiers (see `01_id_and_cleaning.do` and `03_year_panel.do`); imputation tier matters for pre-trend interpretation. Coverage is non-random across provinces and eras — see `coverage_audit.tex`. Database is academically licensed; cite Lee/Campbell/Chen series. |
+| **Scale** | ~38,815 distinct officials; ~2,684 dingyou-treated; ~19,645 in 0601 DiD panel after filters |
+| **Notes** | Text encoded in traditional Chinese. Rank dictionary is maintained externally — do not redefine in code. Year imputation uses 5 tiers (see `01_id_and_cleaning.do` and `03_year_panel.do`); imputation tier matters for pre-trend interpretation. Coverage is non-random across provinces and eras — see `coverage_audit.tex`. Academically licensed; cite the IHP Digital Archive in all derivative reports. |
 
 ---
 
@@ -116,7 +117,7 @@ Active Paper 2 (fertility) datasets live under the in-repo `data/raw/...` layout
 
 | Field | Value |
 |-------|-------|
-| **Source** | Built from §0 CGED-Q via `/Users/xiaoo/Desktop/0525/code/master.do` |
+| **Source** | Built from §0 Academia Sinica IHP Digital Archive via `/Users/xiaoo/Desktop/0525/code/master.do` |
 | **Local path** | `/Users/xiaoo/Desktop/0525/data/` |
 | **Date last refreshed** | 2026-05-28 |
 | **Reproducer** | `cd /Users/xiaoo/Desktop/0525 && stata -b do code/master.do` |
@@ -181,4 +182,4 @@ Active Paper 2 (fertility) datasets live under the in-repo `data/raw/...` layout
 - Economic census data access should be documented [TBD — institution/license number]
 - All raw data should be backed up to [TBD — e.g., university secure storage / external drive]
 - Data last verified complete: [TBD — please fill]
-- CGED-Q derivatives are reproducible from `/Users/xiaoo/Desktop/丁忧/dingyou_clean.dta` via the 0525/0527 master.do pipelines; do not rebuild from scratch unless raw upstream changes.
+- IHP-archive derivatives are reproducible from `/Users/xiaoo/Desktop/丁忧/dingyou_clean.dta` via the 0525/0527/0601 master.do pipelines; do not rebuild from scratch unless raw upstream changes.
