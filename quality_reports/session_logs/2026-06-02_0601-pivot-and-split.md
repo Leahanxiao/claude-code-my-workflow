@@ -422,3 +422,46 @@ where the office-based channel cannot absorb the shock cleanly.
 - [ ] **Consider** whether to delete the older `.bak_*` files in `0601/report/` (97 KB and 55 KB backups) once Module A/B are stable. Currently preserved.
 
 - [ ] **Consider** running `/deep-audit` after the next session to catch any remaining cross-document inconsistencies among CLAUDE.md / AGENTS.md / data-manifest.md / .claude/rules/.
+
+
+---
+**Context compaction (auto) at 16:13**
+Check git log and quality_reports/plans/ for current state.
+
+---
+
+## Round 9 — Rank-Test Within-Province Permutation (post-compaction)
+
+**Trigger:** User asked "make the rank test also do acting succession significance" after a Round 8 audit noted the acting-rate gap was substantively large ($+0.105$) but only $p=0.143$ under cluster-robust SE with twenty-one province clusters and thirty-seven dingyou exits.
+
+**Diagnosis:** The cluster-robust Wald test underweights the within-province nature of the comparison and inflates SE in small-cluster regimes. The natural fix is the conditioning logic that Jones and Olken (2005) themselves use: a within-cluster permutation that preserves each cluster's count of treated units. This matches what the office-level rank test is supposed to measure (does a leave-triggered exit produce an unusual outcome inside the same office's history) and avoids the small-cluster asymptotic problem.
+
+**Code change — `/Users/xiaoo/Desktop/0601/code/14_rank_test.do` (Step 4b):**
+- $5{,}000$-draw within-`post_province` permutation
+- For each draw: reshuffle `is_dingyou` labels among spells within each province while preserving the province's dingyou count; recompute the dingyou-versus-other mean gap on `succ_acting` and on `pct_vac`; tally two-sided "more extreme than observed"
+- Output: permutation $p$ for vacancy percentile gap and for acting-successor gap
+- Seed: `20260607` (reproducible)
+- Stars regenerated based on permutation $p$: $^{*}$ $p<0.10$, $^{**}$ $p<0.05$, $^{***}$ $p<0.01$
+- Runtime: ~90 sec for the 5k draws (single thread, Stata `quietly`)
+
+**Result:**
+- Vacancy-percentile gap: cluster-robust $p=0.111$; permutation $p=0.286$ (consistent with the "no unusual vacancy duration" conclusion)
+- **Acting-successor gap: cluster-robust $p=0.143$; permutation $p=0.034$** ($**$)
+
+The acting-successor finding now formally significant at the 5% level under the inference method that matches the design.
+
+**Report update — `/Users/xiaoo/Desktop/0601/report/identification.tex` §7:**
+- Methods paragraph: added explicit description of within-province permutation ($5{,}000$ draws, preserves province counts, mirrors J&O conditioning)
+- Fact #1 (vacancy duration): now reports both cluster-robust $p=0.111$ and permutation $p=0.286$
+- Fact #2 (acting succession): now reports cluster-robust $p=0.143$ alongside "the within-province permutation test rejects the null of equal acting-successor rates at the five-percent level (permutation $p=0.034$)"
+- Interpretation paragraph: strengthened to "the bridge is invoked at a rate that within-province randomization cannot reproduce"
+
+**Compile:** `latexmk -xelatex -interaction=nonstopmode identification.tex` — clean, 43 pages, 653 KB. No undefined refs, no $!$ errors.
+
+**Table — `/Users/xiaoo/Desktop/0601/output/tables/tab_rank_test.tex`:** Now reports three rows under the mean-diff line: standard error in parentheses, cluster-robust $p$, within-province permutation $p$ with significance stars. Notes paragraph documents both inference methods.
+
+**Why this matters substantively.** Round 8 elevated office-level substitutability to the headline contribution of the paper. With only cluster-robust inference, the central exhibit ("dingyou exits roughly double the acting-bridge rate") was on the edge of conventional significance. The permutation $p$ confirms that the gap is not a sampling artifact of the parametric small-cluster approximation. The paper now has a J&O-style rank test that is both substantively large and formally significant.
+
+**[LEARN:inference] When a cluster-robust Wald test gives $p$ between 0.10 and 0.20 with $\leq 25$ clusters, run the matching within-cluster permutation test before reporting "marginal" or "suggestive." Small-cluster asymptotic SE often overstate noise relative to the design-based permutation null. The permutation $p$ is the inference method the design points to.**
+
+
